@@ -2,7 +2,11 @@ Rails.application.routes.draw do
   devise_for :users
   root 'orders#index'
   resources :orders
-  resources :users
+  resources :users do
+    collection { get :select }
+  end
+  resources :products
+  resources :carts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
 
