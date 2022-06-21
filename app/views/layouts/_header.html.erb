@@ -1,0 +1,19 @@
+<header class="header">
+ <div class="wrapper">
+  <div class="logo">
+  <%= image_tag 'sanpou_logo.png', :size => '64x61'  %>
+   </div>
+
+  <div class="nav">
+      <% if user_signed_in? %>
+      <%= link_to "TOP", orders_path, class: "btn" %>
+      <%= link_to "発注履歴", orders_path, class: "btn" %>
+      <%= link_to "管理", user_path(current_user), class: "btn" %>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
+      <% else %>
+      <%= link_to "新規登録", new_user_registration_path, class: "btn" %>
+      <%= link_to "ログイン", new_user_session_path, class: "btn" %>
+      <% end %>
+   </div>
+ </div>
+</header>

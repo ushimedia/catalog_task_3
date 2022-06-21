@@ -13,3 +13,57 @@
  *= require_tree .
  *= require_self
  */
+
+.header {
+    width: 100%;
+    height: 60px;
+    background: linear-gradient(to right, transparent, #9D8E87);
+}
+
+.header .wrapper {
+    justify-content: space-between;
+    display: flex;
+}
+
+.header .wrapper .nav .btn {
+    color: ivory;
+    text-decoration: none;
+    display: block;
+    /*幅と高さを持ったブロック要素*/
+    line-height: 55px;
+    /*ヘッダーの高さと同じ60px*/
+    padding: 0 25px;
+    /*各リスト項目の余白左右20px*/
+}
+
+.header .wrapper .nav .btn:hover {
+    background: #EDE4E1;
+    opacity: 0.7;
+    color: #9D8E87;
+}
+
+.footer {
+    width: 100%;
+    height: 40px;
+    background: #9D8E87;
+    opacity: 0.7;
+
+    bottom: 0;
+}
+
+.footer p {
+    color: ivory;
+    text-align: center;
+}
+
+body {
+    display: flex;
+    flex-flow: column;
+    min-height: 100vh;
+    margin: 0px;
+}
+
+main {
+    flex: 1;
+
+}
