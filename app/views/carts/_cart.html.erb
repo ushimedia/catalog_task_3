@@ -1,8 +1,11 @@
 <div class="cart">
 <div class="wrapper">
-<H3>カートやで。</H3>
+<H4>商品数: 点</H4>
+<H4>合計:<%= @total %>円</H4>
+
 <div class="logo">
 <%= link_to (image_tag "cart.png", height: "55", with: "70", class: "btn"), new_order_path %>
+<%= link_to "購入に進む", new_order_path %>
  </div>
  </div>
 

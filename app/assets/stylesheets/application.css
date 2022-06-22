@@ -70,13 +70,13 @@ body {
 
 main {
     flex: 1;
-
+    background-color: rgba(237, 228, 225, 0.2);
 }
 
 body main .cart {
     width: 100%;
-    height: 70px;
-    opacity: 0.6;
+    height: 65px;
+    opacity: 0.85;
     background: #E8D3CA;
     bottom: 0px;
     position: sticky;
@@ -86,5 +86,8 @@ body main .cart .wrapper {
     justify-content: space-around;
     display: flex;
 
+}
 
+.card .card_body {
+    display: flex;
 }

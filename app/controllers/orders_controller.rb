@@ -5,6 +5,24 @@ class OrdersController < ApplicationController
   def index
     @orders = Order.all
     @products = Product.all
+
+    @cart_items = current_cart.cart_products.includes([:product])
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+
+
+
+
+
+
+
+
+
+
+  end
+
+  def my_cart
+    @cart_items = current_cart.cart_items.includes([:product])
+    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
   end
 
   # GET /orders/1 or /orders/1.json

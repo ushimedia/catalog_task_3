@@ -1,28 +1,27 @@
+<div class="container-fluid text-center">
+  <h1>発注TOP（というか購買画面）</h1>
+  <div class="row ">
+   <% @products.each do |product| %>
+     <div class="col-md-3">
+     <div class="card">
+     <div class="card-body text-center">
+       <tr>
+       
+       <td><%= link_to "詳細", product_path(product) %></td><br>
+       <td><%= product.name %></td><br>
+       <td><%= product.description %></td><br>
+       <td><%= product.price.to_s(:delimited) %></td>円<br>
+       
 
-<h1>Orders</h1>
+       <tr>
+       </div>
+     </div>
+     </div>
+   <% end %>
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-<% @products.each do |product| %>
 
-  <tr>
-  <td><%= link_to product_path(product) %></td>
-  <td><%= product.name %></td>
-  <td><%= product.price %></td>
-  <td><%= product.stock %></td>
- 
-</tr>
-
-<% end %>
-</tbody>
-</table>
-
+</div>
 
 <table>
   <thead>
@@ -43,9 +42,8 @@
 </table>
 
 <br>
-
-<%= link_to 'New Order', new_order_path %>
-
+</div>
+</div>
 <%= render partial: "carts/cart" %>
 
 
