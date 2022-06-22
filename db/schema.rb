@@ -37,6 +37,12 @@ ActiveRecord::Schema.define(version: 2022_06_21_052140) do
   end
 
   create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.integer "price"
+    t.integer "stock"
+    t.string "image"
+    t.boolean "status", default: true
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

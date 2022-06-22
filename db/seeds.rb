@@ -11,3 +11,13 @@ User.create(name: '堂島大吾', email: 'test2@yahoo.co.jp', password: 'test222
 User.create(name: '秋山駿', email: 'test3@yahoo.co.jp', password: 'test333', password_confirmation: 'test333', role: 0)
 User.create(name: '冴島大河', email: 'test4@yahoo.co.jp', password: 'test444', password_confirmation: 'test444', role: 0)
 User.create(name: '真島吾朗', email: 'test5@yahoo.co.jp', password: 'test555', password_confirmation: 'test555', role: 0)
+
+20.times do |n|
+    Product.create!(
+      name:"商品#{n + 1}",
+      description: "お徳用",
+      price: 9800,
+      stock: 500,
+      status: true
+    )
+end

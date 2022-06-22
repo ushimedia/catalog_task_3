@@ -9,6 +9,29 @@
   </thead>
 
   <tbody>
+<% @products.each do |product| %>
+
+  <tr>
+  <td><%= link_to product_path(product) %></td>
+  <td><%= product.name %></td>
+  <td><%= product.price %></td>
+  <td><%= product.stock %></td>
+ 
+</tr>
+
+<% end %>
+</tbody>
+</table>
+
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
     <% @orders.each do |order| %>
       <tr>
         <td><%= link_to 'Show', order %></td>
@@ -24,3 +47,5 @@
 <%= link_to 'New Order', new_order_path %>
 
 <%= render partial: "carts/cart" %>
+
+
