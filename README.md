@@ -12,16 +12,15 @@
  $ rails s  
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/13czcpOxRDUHjqiCR9KQctfHe2mmqPA_d/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
-
+https://docs.google.com/spreadsheets/d/1qRAWcr3ekBdRdd2cK8QsJQlwr86Vv9yP/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
 ## テーブル定義書
-https://docs.google.com/spreadsheets/d/13czcpOxRDUHjqiCR9KQctfHe2mmqPA_d/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
+https://docs.google.com/spreadsheets/d/1qRAWcr3ekBdRdd2cK8QsJQlwr86Vv9yP/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
 
 ## ワイヤーフレーム
 ![wire_frame3](https://user-images.githubusercontent.com/103015276/174574864-4d6ce760-0d84-4b6d-8d4b-340fe1566111.png)
 
 ## ER図
-![ER3](https://user-images.githubusercontent.com/103015276/174574877-0c5f1e5d-5b62-4582-bb3f-c3450ce7e787.png)
+![ER3](https://user-images.githubusercontent.com/103015276/175273792-96013bc8-d504-468c-aea9-7d4b3d623ffa.png)
 
 
 ## 画面遷移図

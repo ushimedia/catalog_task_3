@@ -91,3 +91,7 @@ body main .cart .wrapper {
 .card .card_body {
     display: flex;
 }
+
+a:hover {
+    background-color: transparent;
+}
