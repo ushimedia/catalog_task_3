@@ -40,3 +40,7 @@
     <%= f.submit t('.update') %>
   </div>
 <% end %>
+
+<%=link_to user_path(current_user) do %>
+  <button>戻る</button>
+<%end%>

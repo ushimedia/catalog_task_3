@@ -95,3 +95,7 @@ body main .cart .wrapper {
 a:hover {
     background-color: transparent;
 }
+
+.field_with_errors {
+    display: contents;
+}

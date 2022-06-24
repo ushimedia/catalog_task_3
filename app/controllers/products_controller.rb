@@ -8,11 +8,13 @@ class ProductsController < ApplicationController
 
   # GET /products/1 or /products/1.json
   def show
+
   end
 
   # GET /products/new
   def new
     @product = Product.new
+    @product.images.new
   end
 
   # GET /products/1/edit
@@ -68,7 +70,8 @@ class ProductsController < ApplicationController
       params.require(:product).permit(
       :name, 
       :price, 
-      :stock
+      :stock, 
+      images_attributes: [:src]
       )
     end
 end
