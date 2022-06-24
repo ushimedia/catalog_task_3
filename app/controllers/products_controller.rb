@@ -71,6 +71,7 @@ class ProductsController < ApplicationController
       :name, 
       :price, 
       :stock, 
+      :status,
       images_attributes: [:src]
       )
     end

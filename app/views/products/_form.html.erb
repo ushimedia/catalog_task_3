@@ -26,10 +26,16 @@
     <%= form.text_field :stock, autofocus: true, autocomplete: "stock" %>
   </div>
 
+  <div class="field">
+    <%= form.label :description %><br />
+    <%= form.text_area :description, autofocus: true, autocomplete: "description" %>
+  </div>
+
   <%= form.fields_for :images do |i| %>
     <%= i.file_field :src %>
   <% end %>
-
+  <br>
+  <br>
   <div class="actions">
     <%= form.submit %>
   </div>

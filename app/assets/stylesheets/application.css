@@ -99,3 +99,15 @@ a:hover {
 .field_with_errors {
     display: contents;
 }
+
+.select li {
+    text-align: center;
+    list-style: none;
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #9D8E87;
+    background: #E8D3CA;
+    border-bottom: solid 6px #e8dfdc;
+    border-radius: 9px;
+    width: 40%;
+}

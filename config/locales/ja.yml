@@ -8,10 +8,16 @@ ja:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
     models:
-      user:
+      user: ユーザー
+      product: 商品
     attributes:
       user:           
         name: 名前 
+      product:
+        name: 名前
+        price: 価格
+        stock: 在庫数
+        description: 商品説明  
   date:
     abbr_day_names:
     - 日

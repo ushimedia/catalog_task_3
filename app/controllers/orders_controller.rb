@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = Order.all
-    @products = Product.all
+    @products = Product.where(status: true).page(params[:page])
 
     @cart_items = current_cart.cart_products.includes([:product])
     @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }

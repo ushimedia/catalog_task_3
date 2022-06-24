@@ -53,11 +53,11 @@ ActiveRecord::Schema.define(version: 2022_06_24_043609) do
   end
 
   create_table "products", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.text "description"
-    t.integer "price"
-    t.integer "stock"
-    t.boolean "status", default: true
+    t.integer "price", null: false
+    t.integer "stock", null: false
+    t.boolean "status", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
