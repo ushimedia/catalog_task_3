@@ -6,16 +6,9 @@ class OrdersController < ApplicationController
     @orders = Order.all
     @products = Product.where(status: true).page(params[:page])
 
-    @cart_items = current_cart.cart_products.includes([:product])
-    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
 
-
-
-
-
-
-
-
+    @cart_items = current_cart.cart_items.includes([:product])
+      @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
 
 
   end

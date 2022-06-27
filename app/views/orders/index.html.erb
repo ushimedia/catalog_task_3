@@ -12,7 +12,9 @@
        <td><%= product.description %></td><br>
        <td><%= product.price.to_s(:delimited) %></td>円<br>
        
-
+       <td>
+			<%= button_to 'カートに入れる', add_item_path(product_id: product), class: 'fbtn' %>
+		</td>
        <tr>
        </div>
      </div>

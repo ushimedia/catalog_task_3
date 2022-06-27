@@ -1,10 +1,8 @@
 class ApplicationController < ActionController::Base
  before_action :configure_permitted_parameters, if: :devise_controller?
  before_action :authenticate_user!
-
  protect_from_forgery with: :exception
-
-  helper_method :current_cart
+ helper_method :current_cart
   
   def current_cart
     if current_user
