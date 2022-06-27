@@ -5,6 +5,7 @@ class CartsController < ApplicationController
     def my_cart
       @cart_items = current_cart.cart_items.includes([:product])
       @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
+      @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
     end
   
     # アイテムの追加
@@ -23,9 +24,9 @@ class CartsController < ApplicationController
     # アイテムの更新
     def update_item
       if @cart_item.update(quantity: params[:quantity].to_i)
-        flash[:notice] = 'カート内のギフトが更新されました'
+        flash[:notice] = 'カート内のアイテムが更新されました'
       else
-        flash[:alert] = 'カート内のギフトの更新に失敗しました'
+        flash[:alert] = 'カート内のアイテムの更新に失敗しました'
       end
       redirect_to my_cart_path
     end
@@ -33,7 +34,7 @@ class CartsController < ApplicationController
     # アイテムの削除
     def delete_item
       if @cart_item.destroy
-        flash[:notice] = 'カート内のギフトが削除されました'
+        flash[:notice] = 'カート内のアイテムが削除されました'
       else
         flash[:alert] = '削除に失敗しました'
       end

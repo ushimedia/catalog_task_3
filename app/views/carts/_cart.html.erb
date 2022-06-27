@@ -1,13 +1,13 @@
 <div class="cart">
 <div class="wrapper">
 <h3>カート</h3>
-<H3>商品数: 点</H3>
+ <H3><%= "商品数: #{@total_item}点" %></H3>
  <h3><%= "合計：#{@total&.to_s(:delimited)}円" %></h3>
 
 
 <div class="logo">
 <%= link_to (image_tag "cart.png", height: "55", with: "70", class: "btn"), my_cart_path %>
-<%= link_to "購入に進む", my_cart_path %>
+<%= link_to "買い物かご確認", my_cart_path %>
  </div>
 
  </div>
