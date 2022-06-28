@@ -18,12 +18,12 @@
 
   <div class="field">
     <%= form.label :price %><br/>(税込価格で登録してください。)<br />
-    <%= form.text_field :price, autofocus: true, autocomplete: "price" %>
+    <%= form.number_field :price, autofocus: true, autocomplete: "price" %>
   </div>
 
   <div class="field">
     <%= form.label :stock %><br />
-    <%= form.text_field :stock, autofocus: true, autocomplete: "stock" %>
+    <%= form.number_field :stock, autofocus: true, autocomplete: "stock" %>
   </div>
 
   <div class="field">

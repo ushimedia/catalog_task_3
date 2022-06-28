@@ -1,17 +1,18 @@
 <!-- ユーザーに確認してもらうための表示です -->
 <% @cart_items.each do |cart| %>
-  <%= cart.item.name %> <!-- 商品名 -->
-  <%= (cart.item.price).to_s(:delimited) %> <!-- 金額 -->
+  <%= cart.product.name %> <!-- 商品名 -->
+  <%= (cart.product.price).to_s(:delimited) %> <!-- 金額 -->
   <%= cart.quantity %> <!-- 個数 -->
-  <%= (cart.item.price*cart.quantity).to_s(:delimited) %> <!-- 小計 -->
+  <%= (cart.product.price*cart.quantity).to_s(:delimited) %> <!-- 小計 --><br>
 <% end %>
 <p>ご請求金額</p>
 <%= @total.to_s(:delimited) %> <!-- お買い物の合計金額 -->
 <p>お届け先</p>
+<%= @order.name %>
 <%= @order.address %>
 
 <!-- ユーザーには注文確定ボタンだけ表示します -->
-<%= form_with model: @order, url: create へのパス, local: true do |f| %>
+<%= form_with model: @order, url: orders_path(@order), local: true do |f| %>
   <%= f.hidden_field :name %>
   <%= f.hidden_field :address %>
   <%= f.hidden_field :total_price, value: @total %>

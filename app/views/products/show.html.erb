@@ -1,9 +1,14 @@
+<p>商品画像: </p>
+<% if @product.images[0].src.blank? %>
+       <%= image_tag 'noimage.png', :size => '110x110' %>
+       <% else %>
+       <%= image_tag @product.images[0].src.url, :size => '110x110' %>
+       <% end %>
+<H5>名前: <%= @product.name %></H5>
+<H5>金額: <%= @product.price.to_s(:delimited) %>円</H5>
+<H5>商品説明: <%= @product.description %></H5>
+<H5>在庫: 残り<%= @product.stock %>個</H5>
 
-<p>名前: <%= @product.name %></p>
-<p>金額: <%= @product.price %></p>
-<p>商品説明: <%= @product.description %></p>
-<p>在庫: <%= @product.stock %></p>
-<p>商品画像: <%= @product.stock %></p>
 
 
 <%= link_to "トップページ", root_path %>

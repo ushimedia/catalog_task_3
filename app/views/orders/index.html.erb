@@ -8,9 +8,9 @@
        <tr>
        <td>
        <% if product.images[0].src.blank? %>
-       <%= image_tag 'noimage.png', :size => '100x100' %>
+       <%= image_tag 'noimage.png', :size => '110x110' %>
        <% else %>
-       <%= image_tag product.images[0].src.url %>
+       <%= image_tag product.images[0].src.url, :size => '110x110' %>
        <% end %>
      
        </td><br>
