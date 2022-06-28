@@ -7,7 +7,7 @@
   <div class="nav">
       <% if user_signed_in? %>
       <%= link_to "TOP", orders_path, class: "btn" %>
-      <%= link_to "発注履歴", orders_path, class: "btn" %>
+      <%= link_to "発注履歴", history_orders_path, class: "btn" %>
       <%= link_to "管理", select_users_path, class: "btn" %>
       <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "btn" %>
       <% else %>

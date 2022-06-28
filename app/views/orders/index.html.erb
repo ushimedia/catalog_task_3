@@ -7,10 +7,10 @@
      <div class="card-body text-center">
        <tr>
        <td>
-       <% if product.images[0].src.blank? %>
+       <% if product.image.blank? %>
        <%= image_tag 'noimage.png', :size => '110x110' %>
        <% else %>
-       <%= image_tag product.images[0].src.url, :size => '110x110' %>
+       <%= image_tag product.image.url, :size => '110x110' %>
        <% end %>
      
        </td><br>

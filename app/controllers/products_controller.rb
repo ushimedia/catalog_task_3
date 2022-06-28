@@ -14,7 +14,6 @@ class ProductsController < ApplicationController
   # GET /products/new
   def new
     @product = Product.new
-    @product.images.new
   end
 
   # GET /products/1/edit
@@ -27,7 +26,7 @@ class ProductsController < ApplicationController
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to products_path, notice: "Product was successfully created." }
+        format.html { redirect_to products_path, notice: "商品登録が完了しました。" }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -73,6 +72,7 @@ class ProductsController < ApplicationController
       :stock, 
       :status,
       :description,
+      :image,
       images_attributes: [:src]
       )
     end

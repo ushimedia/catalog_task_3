@@ -31,10 +31,11 @@
     <%= form.text_area :description, autofocus: true, autocomplete: "description" %>
   </div>
 
-  <%= form.fields_for :images do |i| %>
-    <%= i.file_field :src %>
-  <% end %>
-  <br>
+  <div class="field">
+    <%= form.label :image %>(一枚まで)<br />
+    <%= form.file_field :image, autofocus: true, autocomplete: "image" %>
+  </div>
+  
   <br>
   <div class="actions">
     <%= form.submit %>

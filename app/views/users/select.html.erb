@@ -1,8 +1,20 @@
 <div class ="select">
+
+ <% if current_user.admin? %>
     <li><%= link_to "受注履歴", orders_path %></li>
     <li><%= link_to "商品管理", products_path %></li>
     <li><%= link_to "アカウント", user_path(current_user) %></li>
+ <% end %>
+   
+ <% if current_user.pic? %>
+    <li><%= link_to "受注履歴", received_orders_path %></li>
+    <li><%= link_to "商品管理", products_path %></li>
+    <li><%= link_to "アカウント", user_path(current_user) %></li>
+ <% end %>
 
-    </div>
+ <% if current_user.general? %>
+    <li><%= link_to "アカウント", user_path(current_user) %></li>
+ <% end %>
+</div>
 
 

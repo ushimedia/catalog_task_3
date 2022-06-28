@@ -4,12 +4,17 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
     @orders = Order.all
-    @products = Product.includes(:images).where(status: true).page(params[:page])
-    @images = Image.all
+    @products = Product.where(status: true).page(params[:page])
 
    @cart_items = current_cart.cart_items.includes([:product])
    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
    @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
+
+  end
+
+  def history
+    @orders = Order.all
+    
 
   end
 
@@ -125,7 +130,7 @@ end
 
     # Only allow a list of trusted parameters through.
     def order_params
-    params.require(:order).permit(:name, :address, :total_price)
+    params.require(:order).permit(:name, :address, :total_price, :status)
   end
   
   def address_params

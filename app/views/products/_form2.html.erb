@@ -36,11 +36,11 @@
    <%= form.label :status, '取り下げ中', value: false %>
    </div>
 
-  
-    <%= form.fields_for :images do |i| %>
-      <%= i.file_field :src, autofocus: true, autocomplete: "src" %>
-    <% end %>
-  
+   <div class="field">
+   <%= form.label :image %><br />
+   <%= form.file_field :image, autofocus: true, autocomplete: "image" %>
+ </div>
+ <br>
     <div class="actions">
       <%= form.submit %>
     </div>

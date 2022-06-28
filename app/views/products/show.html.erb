@@ -1,8 +1,8 @@
 <p>商品画像: </p>
-<% if @product.images[0].src.blank? %>
+<% if @product.image.blank? %>
        <%= image_tag 'noimage.png', :size => '110x110' %>
        <% else %>
-       <%= image_tag @product.images[0].src.url, :size => '110x110' %>
+       <%= image_tag @product.image.url, :size => '110x110' %>
        <% end %>
 <H5>名前: <%= @product.name %></H5>
 <H5>金額: <%= @product.price.to_s(:delimited) %>円</H5>

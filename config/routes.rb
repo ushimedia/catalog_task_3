@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root 'orders#index'
   resources :orders do
     collection { post :check }
+    collection { get :history }
+    collection { get :received }
   end
   resources :users do
     collection { get :select }

@@ -6,7 +6,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.integer :price, null: false
       t.integer :stock, null: false
       t.boolean :status, default: true, null: false
-
+      t.string :image
       t.timestamps
     end
   end
