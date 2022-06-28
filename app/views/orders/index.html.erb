@@ -6,11 +6,19 @@
      <div class="card">
      <div class="card-body text-center">
        <tr>
+       <td>
+       <% if product.images[0].src.blank? %>
+       <%= image_tag 'noimage.png', :size => '100x100' %>
+       <% else %>
+       <%= image_tag product.images[0].src.url %>
+       <% end %>
+     
+       </td><br>
        
        <td><%= link_to "詳細", product_path(product) %></td><br>
        <td><%= product.name %></td><br>
        <td><%= product.description %></td><br>
-       <td><%= product.price.to_s(:delimited) %></td>円<br>
+       <td><%= product.price.to_s(:delimited) %></td>円(税込)<br>
        
        
 			<%= button_to 'カートに入れる', add_item_path(product_id: product, quantity: 1), class: 'fbtn' %>

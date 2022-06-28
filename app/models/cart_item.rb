@@ -1,6 +1,7 @@
 class CartItem < ApplicationRecord
     belongs_to :product
     belongs_to :cart
+    belongs_to :order
   
     # カート内の商品合計に利用
     def sum_of_price

@@ -3,7 +3,9 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
    } 
   root 'orders#index'
-  resources :orders
+  resources :orders do
+    collection { post :check }
+  end
   resources :users do
     collection { get :select }
   end

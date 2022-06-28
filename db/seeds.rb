@@ -18,6 +18,12 @@ User.create(name: '真島吾朗', email: 'test5@yahoo.co.jp', password: 'test555
       description: "お徳用",
       price: 9800,
       stock: 500,
-      status: true
+    
     )
+end
+20.times do |n|
+  Image.create!(
+    src:"Real_Ruby.jpg",
+    product_id: "#{n + 1}",
+  )
 end

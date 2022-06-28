@@ -38,7 +38,7 @@
 
   
     <%= form.fields_for :images do |i| %>
-      <%= i.file_field :src %>
+      <%= i.file_field :src, autofocus: true, autocomplete: "src" %>
     <% end %>
   
     <div class="actions">

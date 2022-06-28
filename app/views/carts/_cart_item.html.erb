@@ -7,5 +7,6 @@
     <%= f.submit "更新", class: "" %>
     <% end %>
     <%= button_to "削除", delete_item_path(product_id: cart_item.product.id), method: :delete,
-                                       data: { confirm: "商品を削除しますか？" } %>
+                                       data: { confirm: "カートから商品を削除しますか？" } %>
 </li>
+

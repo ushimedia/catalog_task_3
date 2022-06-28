@@ -3,3 +3,23 @@
 <%= render 'form', order: @order %>
 
 <%= link_to 'Back', orders_path %>
+
+<!-- @order でラジオボタンを使って情報を送ります -->
+<%= form_with model: @order, url: check_orders_path, local: true do |f| %>
+<!-- customer テーブルに登録されている住所の場合です -->
+  <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
+  <%= f.label :address_number_1, "ご自身の住所" %>
+
+
+
+<!-- 新しい住所を追加する場合です -->
+  <%= f.radio_button :address_number, 3 %>
+  <%= f.label :address_number_3, "新しいお届け先" %>
+  <%= f.label :address, "住所" %>
+  <%= f.text_field :address %>
+  <%= f.label :address_name, "宛名" %>
+  <%= f.text_field :address_name %>
+<!-- 選んでもらったデータを送ります -->
+  <%= f.submit "確認画面へ進む" %>
+<% end %>
+
