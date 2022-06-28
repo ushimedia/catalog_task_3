@@ -100,7 +100,10 @@ a:hover {
     display: contents;
 }
 
+
+
 .select li {
+    box-sizing: content-box;
     text-align: center;
     list-style: none;
     padding: 0.5em 1em;
@@ -109,5 +112,4 @@ a:hover {
     background: #E8D3CA;
     border-bottom: solid 6px #e8dfdc;
     border-radius: 9px;
-    width: 40%;
 }

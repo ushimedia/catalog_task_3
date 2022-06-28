@@ -5,12 +5,15 @@
 <!-- @order でラジオボタンを使って情報を送ります -->
 <%= form_with model: @order, url: check_orders_path, local: true do |f| %>
 <!-- customer テーブルに登録されている住所の場合です -->
-  <%= f.radio_button :address_number, 1 %> <!-- address_number と定義して1～3の番号を check に送ります -->
-  <%= f.label :address_number_1, "ご自身の住所" %>
+  <%= f.radio_button :address_number, 1, checked: true %> <!-- address_number と定義して1～3の番号を check に送ります -->
+  <%= f.label :address_number_1, "ご自身の住所" %><br>
 
+<!-- 登録されたaddressから選んでもらう場合です -->
+  <%= f.radio_button :address_number, 2 %>
+  <%= f.label :address_number_2, "登録先の住所" %>
+  <%= f.collection_select(:registered, current_user.addresses.all, :id, :address) %><br>
 
-<br>
-<!-- 新しい住所を追加する場合です -->
+  <!-- 新しい住所を追加する場合です -->
   <%= f.radio_button :address_number, 3 %>
   <%= f.label :address_number_3, "新しいお届け先" %>
   <%= f.label :address_name, "宛先" %>

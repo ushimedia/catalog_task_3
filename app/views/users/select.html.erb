@@ -1,7 +1,10 @@
-<div class ="select">
+<div class="row">
+<div class="col-4"></div>
+<div class="col-4 justify-content-center">
 
+<div class ="select">
  <% if current_user.admin? %>
-    <li><%= link_to "受注履歴", orders_path %></li>
+    <li><%= link_to "受注履歴", received_orders_path %></li>
     <li><%= link_to "商品管理", products_path %></li>
     <li><%= link_to "アカウント", user_path(current_user) %></li>
  <% end %>
@@ -15,6 +18,8 @@
  <% if current_user.general? %>
     <li><%= link_to "アカウント", user_path(current_user) %></li>
  <% end %>
+</div>
+<div class="col-4"></div>
 </div>
 
 
