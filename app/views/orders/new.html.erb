@@ -12,7 +12,7 @@
 
   <!-- 新しい住所を追加する場合です -->
   <%= f.radio_button :address_number, 3 %>
-  <%= f.label :address_number_3, "新しいお届け先" %>
+  <%= f.label :address_number_3, "登録住所以外のお届け先" %>
   <%= f.label :name, "宛先" %>
   <%= f.text_field :name %>
   <%= f.label :address, "住所" %>
@@ -22,4 +22,5 @@
 <br>
   <%= f.submit "確認画面へ進む" %>
 <% end %>
+<%= link_to '戻る', my_cart_path %>
 

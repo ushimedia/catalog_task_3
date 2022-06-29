@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
 
 
   def history
-    @orders = Order.all
+    @orders = Order.where(user_id: current_user.id)
     
 
   end

@@ -1,0 +1,41 @@
+<%= form_with(model: order, local: true) do |form| %>
+    <% if order.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+  
+        <ul>
+          <% order.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+  <div class="status">
+ <%= form.label :受注処理状況 %><br>
+ <%= form.radio_button :status, '発注済' %>
+ <%= form.label :status, '発注済', value: 0 %>
+
+  <%= form.radio_button :status, '店舗確認中' %>
+  <%= form.label :status, '店舗確認中', value: 1 %>
+
+  <%= form.radio_button :status, '発送準備中' %>
+  <%= form.label :status, '発送準備中', value: 2 %>
+
+  <%= form.radio_button :status, '発送済' %>
+  <%= form.label :status, '発送済', value: 3 %>
+</div>  
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  
+
+
+
+
+
+
+
+ 

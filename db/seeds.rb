@@ -16,8 +16,8 @@ User.create(name: 'サンワコムシス', company_address: '東京都港区東�
     Product.create!(
       name:"商品#{n + 1}",
       description: "お徳用",
-      price: 9800,
-      stock: 500,
+      price: 1980,
+      stock: 5,
     
     )
 end

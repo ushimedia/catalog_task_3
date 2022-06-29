@@ -1,4 +1,9 @@
 <h2>カート内アイテム</h2>
 <%= render partial: "carts/cart_item", collection: @cart_items, as: "cart_item"%>
 <h2><%= "合計：#{@total&.to_s(:delimited)}円" %></h2>
+
+<% if @total == 0 %>
+<%= link_to '商品を選んでください', orders_path %>
+<% else %>
 <%= link_to '購入に進む', new_order_path %>
+<% end %>
