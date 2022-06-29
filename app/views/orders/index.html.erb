@@ -19,7 +19,8 @@
        <td><%= product.name %></td><br>
        <td><%= product.description %></td><br>
        <td><%= product.price.to_s(:delimited) %></td>円(税込)<br>
-       
+
+     
        
 			<%= button_to 'カートに入れる', add_item_path(product_id: product, quantity: 1), class: 'fbtn' %>
 

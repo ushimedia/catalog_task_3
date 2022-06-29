@@ -1,3 +1,15 @@
+<%= @order.created_at.strftime("%Y年%-m月%-d日") %>
+<%= @order.created_at.strftime("%-H時%-M分") %>
+<%= @order.address %>
+<%= @order.total_price %><br>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<% @order_product.each do |order_product| %>
+    <%= order_product.product.name %>
+    <%= (order_product.product.price).to_s(:delimited) %>円
+    <%= order_product.order_quantity %>個
+    小計<%= (order_product.product.price*order_product.order_quantity).to_s(:delimited) %>円<br>
+  <% end %>
+
+
+
+<%= link_to 'Back', history_orders_path %>

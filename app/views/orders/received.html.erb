@@ -8,7 +8,7 @@
     <th>発注日</th>
     <th>時間</th>
     <th>ステータス</th>
-    <th>発注者</th>
+    <th>発注業者</th>
     <th>配送先</th>
     <th>合計金額</th>
     <th>詳細</th>
@@ -24,13 +24,14 @@
       <td><%= order.created_at.strftime("%Y年%-m月%-d日") %></td>
       <td><%= order.created_at.strftime("%-H時%-M分") %></td>
       <td><%= order.status %></td>
+  
+      <td><%= order.user.name %></td>
       <td><%= order.address %></td>
-
       <td><%= order.total_price.to_s(:delimited) %>円</td>
 
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '詳細確認', order %></td>
+        <td><%= link_to '編集', edit_order_path(order) %></td>
+        <td><%= link_to '受注削除', order, method: :delete, data: { confirm: '受注を削除します。先方の発注業者様の確認は取れておりますでしょうか?' } %></td>
       </tr>
     <% end %>
   </tbody>

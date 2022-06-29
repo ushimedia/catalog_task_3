@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
 
   end
 
+
   def history
     @orders = Order.all
     
@@ -27,6 +28,7 @@ class OrdersController < ApplicationController
 
   # GET /orders/1 or /orders/1.json
   def show
+    @order_product = OrderProduct.where(order_id: params[:id])
   end
 
   # GET /orders/new
@@ -78,7 +80,7 @@ def check
 # form_with で @order で送っているので、order に紐付いた address_number となります。以下同様です
 # この辺の紐付けは勉強不足なので gem の pry-byebug を使って確認しながら行いました
     @order.name = current_user.name # @order の各カラムに必要なものを入れます
-    @order.address = current_user.user_address
+    @order.address = current_user.company_address
   elsif params[:order][:address_number] == "2"
 # view で定義している address_number が"2"だったときにこの処理を実行します
     if Address.exists?(name: params[:order][:registered])
