@@ -3,15 +3,11 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @q = Product.ransack(params[:q])
-    @products = @q.result.where(status: true)
-  
-
+   @q = Product.ransack(params[:q])
+   @products = @q.result.where(status: true)
    @cart_items = current_cart.cart_items.includes([:product])
    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
    @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
-
-
   end
 
 
@@ -26,6 +22,14 @@ class OrdersController < ApplicationController
 
   def received
     @orders = Order.all
+    
+    respond_to do |format|
+      format.html
+      format.csv do |csv|
+        send_orders_csv(@orders)
+      end
+    end
+    
     
 
   end
@@ -64,6 +68,7 @@ class OrdersController < ApplicationController
         order_product.order_price = cart.product.price
   # カート情報を削除するので item との紐付けが切れる前に保存します
         order_product.save
+        
       end
       redirect_to root_path
       flash[:notice] = '注文が送信されました。'
@@ -105,7 +110,7 @@ def check
 # ここに渡ってくるデータはユーザーで新規追加してもらうので、入力不足の場合は new に戻します
     end
   else
-    redirect_to 遷移したいページ # ありえないですが、万が一当てはまらないデータが渡ってきた場合の処理です
+    redirect_to root_path # ありえないですが、万が一当てはまらないデータが渡ってきた場合の処理です
   end
   @cart_items = current_cart.cart_items.all # カートアイテムの情報をユーザーに確認してもらうために使用します
   @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
@@ -116,7 +121,7 @@ end
   def update
     respond_to do |format|
       if @order.update(order_params)
-        format.html { redirect_to order_url(@order), notice: "Order was successfully updated." }
+        format.html { redirect_to received_orders_path, notice: "受注情報が更新されました。" }
         format.json { render :show, status: :ok, location: @order }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -151,4 +156,24 @@ end
   def address_params
     params.require(:order).permit(:name, :address)
   end
+
+  def send_orders_csv(orders)
+    bom = "\uFEFF"
+    csv_data = CSV.generate(bom) do |csv|
+      column_names = %w(名前 発注日 発送先 合計金額 なんかとりあえずの列)
+      csv << column_names
+      orders.each do |order|
+        column_values = [
+          order.user.name,
+          order.created_at.strftime("%-H時%-M分"),
+          order.address,
+          order.total_price.to_s(:delimited),
+          order.updated_at,
+        ]
+        csv << column_values
+      end
+    end
+    send_data(csv_data, filename: "受注一覧.csv")
+  end
+
 end

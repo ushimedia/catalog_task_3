@@ -3,7 +3,7 @@
 発注日:<%= @order.created_at.strftime("%Y年%-m月%-d日") %><br>
 時間:<%= @order.created_at.strftime("%-H時%-M分") %><br>
 配送先:<%= @order.address %><br>
-支払総額:<%= @order.total_price %>円<br>
+支払総額:<%= @order.total_price.to_s(:delimited) %>円<br>
 発送状況:<%= @order.status %><br>
 
 商品詳細:<% @order_product.each do |order_product| %>

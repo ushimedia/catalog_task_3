@@ -12,7 +12,10 @@ Rails.application.routes.draw do
   resources :users do
     collection { get :select }
   end
-  resources :products
+  resources :products do
+    collection {post :import}
+  end
+
   resources :carts
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get '/my_cart' => 'carts#my_cart'

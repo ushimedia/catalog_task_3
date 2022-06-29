@@ -18,6 +18,7 @@ User.create(name: 'サンワコムシス', company_address: '東京都港区東�
       description: "お徳用",
       price: 1980,
       stock: 5,
+      user_id: 1
     
     )
 end

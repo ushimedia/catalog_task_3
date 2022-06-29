@@ -6,6 +6,11 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def import
+    Product.import(params[:file], current_user.id)
+    redirect_to products_path
+  end
+
   # GET /products/1 or /products/1.json
   def show
 
@@ -19,6 +24,8 @@ class ProductsController < ApplicationController
   # GET /products/1/edit
   def edit
   end
+
+
 
   # POST /products or /products.json
   def create

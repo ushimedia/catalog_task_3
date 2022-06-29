@@ -70,8 +70,10 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
     t.integer "stock", null: false
     t.boolean "status", default: true, null: false
     t.string "image"
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_products_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -96,4 +98,5 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
   add_foreign_key "order_products", "orders"
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"
+  add_foreign_key "products", "users"
 end

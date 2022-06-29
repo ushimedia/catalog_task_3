@@ -7,6 +7,7 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.integer :stock, null: false
       t.boolean :status, default: true, null: false
       t.string :image
+      t.references :user, null: false, foreign_key: true
       t.timestamps
     end
   end
