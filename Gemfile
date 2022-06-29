@@ -32,6 +32,7 @@ gem 'devise-i18n'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'kaminari'
+gem 'ransack'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

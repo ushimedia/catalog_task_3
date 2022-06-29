@@ -3,14 +3,19 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all
-    @products = Product.where(status: true).page(params[:page])
+    @q = Product.ransack(params[:q])
+    @products = @q.result.where(status: true)
+  
 
    @cart_items = current_cart.cart_items.includes([:product])
    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
    @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
 
+
   end
+
+
+
 
 
   def history
@@ -131,6 +136,8 @@ end
   end
 
   private
+
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_order
       @order = Order.find(params[:id])

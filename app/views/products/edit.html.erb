@@ -1,5 +1,5 @@
 <h1>Editing Product</h1>
-
+<%= render 'form2', product: @product %>
 <% if current_user.admin? %>
    発送ステータスを更新できるのは発注ご担当者の方のみとなります。
    
