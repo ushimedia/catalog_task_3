@@ -19,16 +19,16 @@
        <tr>
        <td>
        <% if product.image.blank? %>
-       <%= image_tag 'noimage.png', :size => '110x110' %>
+       <%= image_tag 'noimage.png', :size => '120x120' %>
        <% else %>
-       <%= image_tag product.image.url, :size => '110x110' %>
+       <%= image_tag product.image.url, :size => '120x120' %>
        <% end %>
      
        </td><br>
        
        <td><%= link_to "詳細", product_path(product) %></td><br>
        <td><%= product.name %></td><br>
-       <td><%= product.description %></td><br>
+       <td><%= product&.description&.truncate(15) %></td><br>
        <td><%= product.price.to_s(:delimited) %></td>円(税込)<br>
 
      
