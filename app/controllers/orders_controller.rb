@@ -116,13 +116,13 @@ end
   # PATCH/PUT /orders/1 or /orders/1.json
   def update
     respond_to do |format|
-      if @order.update(order_params)
+      if @order.update(order_params) && @order.status == "発送済"
         DeliveryMailer.with(order: @order, user: current_user).delivery_email.deliver_now
         format.html { redirect_to received_orders_path, notice: "受注情報が更新されました。" }
         format.json { render :show, status: :ok, location: @order }
       else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @order.errors, status: :unprocessable_entity }
+        format.html { redirect_to received_orders_path, notice: "受注情報が更新されました。" }
+        format.json { render :show, status: :ok, location: @order }
       end
     end
   end

@@ -21,3 +21,26 @@ User.create(name: 'サンワコムシス', company_address: '東京都品川区�
     user_id: 2,
   )
 end
+
+5.times do |n|
+  Order.create!(
+    name:"トーエネック東京本部",
+    address: "東京都豊島区巣鴨1-3-11",
+    total_price: 1980,
+    user_id: 3,
+    created_at: "2022-06-#{n + 1} 13:58:53.271091",
+    updated_at: "2022-06-#{n + 1} 13:58:53.271091",
+  )
+end
+
+5.times do |n|
+  OrderProduct.create!(
+    product_id: 1,
+    order_id: "#{n + 1}",
+    order_quantity: 1,
+    order_price: 1980,
+    created_at: "2022-06-#{n + 1} 13:58:53.271091",
+    updated_at: "2022-06-#{n + 1} 13:58:53.271091",
+  )
+end
+
