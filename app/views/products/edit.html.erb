@@ -1,16 +1,11 @@
-<h1>Editing Product</h1>
+<h1>商品情報編集</h1>
 <%= render 'form2', product: @product %>
-<% if current_user.admin? %>
-   発送ステータスを更新できるのは発注ご担当者の方のみとなります。
-   
-<%= link_to 'Back', products_path %>
- <% end %>
-   
- <% if current_user.pic? %>
-    <%= link_to 'Show', @product %> |
+
+ 
+
 <%= link_to 'Back', products_path %>
 
 
- <% end %>
+ 
 
 

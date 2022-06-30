@@ -7,10 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create(name: 'SANPOU株式会社', company_address: '東京都千代田区飯田橋4-8-9', email: 'test1@yahoo.co.jp', password: 'test111', password_confirmation: 'test111', role: 2)
-User.create(name: 'NOKIA（通信機器ベンダー）', company_address: '東京都港区東新橋1-3-17 MOMENTO SHIODOME', email: 'test2@yahoo.co.jp', password: 'test222', password_confirmation: 'test222', role: 1)
-User.create(name: 'トーエネック', company_address: '東京都港区東新橋2-3-17 MOMENTO SHIODOME', email: 'test3@yahoo.co.jp', password: 'test333', password_confirmation: 'test333', role: 0)
-User.create(name: '協和エクシオ', company_address: '東京都港区東新橋3-3-17 MOMENTO SHIODOME', email: 'test4@yahoo.co.jp', password: 'test444', password_confirmation: 'test444', role: 0)
-User.create(name: 'サンワコムシス', company_address: '東京都港区東新橋4-3-17 MOMENTO SHIODOME', email: 'test5@yahoo.co.jp', password: 'test555', password_confirmation: 'test555', role: 0)
+User.create(name: 'NOKIA（通信機器ベンダー）', company_address: '東京都世田谷区玉川一丁目14番1号', email: 'test2@yahoo.co.jp', password: 'test222', password_confirmation: 'test222', role: 1)
+User.create(name: 'トーエネック東京本部', company_address: '東京都豊島区巣鴨1-3-11', email: 'test3@yahoo.co.jp', password: 'test333', password_confirmation: 'test333', role: 0)
+User.create(name: '協和エクシオ', company_address: '東京都大田区平和島4丁目1番23号', email: 'test4@yahoo.co.jp', password: 'test444', password_confirmation: 'test444', role: 0)
+User.create(name: 'サンワコムシス', company_address: '東京都品川区東五反田2-17-1', email: 'test5@yahoo.co.jp', password: 'test555', password_confirmation: 'test555', role: 0)
 
 20.times do |n|
   Product.create!(

@@ -161,15 +161,15 @@ end
   def send_orders_csv(orders)
     bom = "\uFEFF"
     csv_data = CSV.generate(bom) do |csv|
-      column_names = %w(発注業者 発注日 配送先 合計金額 発送ステータス)
+      column_names = %w(発注業者 発注日 発注時刻 配送先 合計金額 発送ステータス)
       csv << column_names
       orders.each do |order|
         column_values = [
           order.user.name,
+          order.created_at.strftime("%-m月%-d日"),
           order.created_at.strftime("%-H時%-M分"),
           order.address,
           order.total_price.to_s(:delimited),
-          order.updated_at,
           order.status
         ]
         csv << column_values
