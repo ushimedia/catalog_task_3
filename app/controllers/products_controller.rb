@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
   # POST /products or /products.json
   def create
     @product = Product.new(product_params)
-
+    @product.user_id = current_user.id
     respond_to do |format|
       if @product.save
         format.html { redirect_to products_path, notice: "商品登録が完了しました。" }

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   end
   resources :products do
     collection {post :import}
+    
   end
 
   resources :carts

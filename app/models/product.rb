@@ -1,10 +1,15 @@
 class Product < ApplicationRecord
+ # validates :price, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+  validates :stock, presence: true, numericality: {only_integer: true, greater_than_or_equal_to: 0}
+
     has_many :cart_items, dependent: :destroy
     has_many :order_products, dependent: :destroy
     has_many :orders, through: :order_products
     belongs_to :user
     enum status: { 出品中: true, 取り下げ中: false }
     mount_uploader :image, ImageUploader
+
+  
 
     def self.import(file, current)
         CSV.foreach(file.path, headers: true) do |row|

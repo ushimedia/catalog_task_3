@@ -53,7 +53,9 @@ class OrdersController < ApplicationController
 
   # POST /orders or /orders.json
   def create # Order に情報を保存します
-    cart_items = current_cart.cart_items.all
+    Order.transaction do
+   
+      cart_items = current_cart.cart_items.all
   # ログインユーザーのカートアイテムをすべて取り出して cart_items に入れます
     @order = current_user.orders.new(order_params)
   # 渡ってきた値を @order に入れます
@@ -70,17 +72,22 @@ class OrdersController < ApplicationController
         order_product.order_price = cart.product.price
   # カート情報を削除するので item との紐付けが切れる前に保存します
         order_product.save
+        @product = Product.find(order_product.product_id)
+        @product.stock -= order_product.order_quantity 
+
+        @product.save
         
       end
       redirect_to root_path
       flash[:notice] = '注文が送信されました。'
       cart_items.destroy_all
-
+      
   # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
     else
       @order = Order.new(order_params)
       render :new
     end
+  end
   end
 
   # new 画面から渡ってきたデータをユーザーに確認してもらいます
@@ -162,7 +169,7 @@ end
   def send_orders_csv(orders)
     bom = "\uFEFF"
     csv_data = CSV.generate(bom) do |csv|
-      column_names = %w(名前 発注日 発送先 合計金額 なんかとりあえずの列)
+      column_names = %w(発注業者 発注日 配送先 合計金額 発送ステータス)
       csv << column_names
       orders.each do |order|
         column_values = [
@@ -171,6 +178,7 @@ end
           order.address,
           order.total_price.to_s(:delimited),
           order.updated_at,
+          order.status
         ]
         csv << column_values
       end
