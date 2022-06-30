@@ -17,13 +17,13 @@ class OrdersController < ApplicationController
 
 
   def history
-    @orders = Order.where(user_id: current_user.id)
+    @orders = Order.where(user_id: current_user.id, discarded_at: nil)
     
 
   end
 
   def received
-    @orders = Order.all
+    @orders = Order.where(discarded_at: nil)
     
     respond_to do |format|
       format.html
@@ -132,7 +132,7 @@ end
     @order.discard
 
     respond_to do |format|
-      format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }
+      format.html { redirect_to received_orders_path, notice: "受注が削除されました。" }
       format.json { head :no_content }
     end
   end
