@@ -1,5 +1,5 @@
-
-
+<H3> NOKIA NET SHOP </H3>
+<p>商品名でも商品説明でもキーワード一つで好きに検索できます！</p>
 <%= search_form_for @q, url:orders_url do |f| %>
   <%= f.label :name, "キーワード" %>
   <%= f.search_field :name_or_description_cont %><br>
@@ -30,7 +30,7 @@
        <td><%= product.name %></td><br>
        <td><%= product&.description&.truncate(15) %></td><br>
        <td><%= product.price.to_s(:delimited) %></td>円(税込)<br>
-
+       <td>残り<%= product.stock %></td>個<br>
        <% if product.stock > 0 %>
        <%= button_to '商品をかごに追加', add_item_path(product_id: product, quantity: 1), class: 'fbtn' %>
        <% else %>

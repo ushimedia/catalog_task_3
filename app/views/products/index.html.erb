@@ -1,10 +1,10 @@
 
 <h1>商品管理</h1>
 
-<%= link_to '商品を登録する', new_product_path %>
+<%= link_to '一つずつ商品を登録する', new_product_path %>
 <%= form_tag import_products_path, multipart: true do %>
   <%= file_field_tag :file %>
-  <%= submit_tag "CSVで商品一括登録" %>
+  <%= submit_tag "CSVで商品を一括登録する" %>
 <% end %>
 <div class="row">
 <div class="col-12 d-flex justify-content-center">
