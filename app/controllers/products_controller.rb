@@ -64,7 +64,7 @@ class ProductsController < ApplicationController
     @product.discard
 
     respond_to do |format|
-      format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
+      format.html { redirect_to products_url, notice: "商品は正常に削除されました。" }
       format.json { head :no_content }
     end
   end
