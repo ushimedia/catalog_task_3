@@ -15,7 +15,7 @@ User.create(name: 'サンワコムシス', company_address: '東京都品川区�
 20.times do |n|
   Product.create!(
     name:"NOKIAの商品#{n + 1}",
-    description: "お徳用",
+    description: "MSA準拠SFPモジュール。光ファイバケーブルで最大で40kmの距離に対応し、安定した1GbE接続を提供します。",
     price: 1980,
     stock: 3,
     user_id: 2,
