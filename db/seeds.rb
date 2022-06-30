@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-User.create(name: 'SANPOU株式会社', company_address: '東京都千代田区飯田橋4-8-9', email: 'test1@yahoo.co.jp', password: 'test111', password_confirmation: 'test111', role: 1)
+User.create(name: 'SANPOU株式会社', company_address: '東京都千代田区飯田橋4-8-9', email: 'test1@yahoo.co.jp', password: 'test111', password_confirmation: 'test111', role: 0)
 User.create(name: 'NOKIA（通信機器ベンダー）', company_address: '東京都世田谷区玉川一丁目14番1号', email: 'yusuke_ushioda@mediado.jp', password: 'test222', password_confirmation: 'test222', role: 1)
 User.create(name: 'トーエネック東京本部', company_address: '東京都豊島区巣鴨1-3-11', email: 'test3@yahoo.co.jp', password: 'test333', password_confirmation: 'test333', role: 0)
 User.create(name: '協和エクシオ', company_address: '東京都大田区平和島4丁目1番23号', email: 'test4@yahoo.co.jp', password: 'test444', password_confirmation: 'test444', role: 0)
