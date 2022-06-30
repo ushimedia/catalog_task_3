@@ -38,7 +38,7 @@
       <td><%= product.stock.to_s(:delimited) %>個</td>
       <td><%= product&.description&.truncate(40) %></td>
       <td><%= product.status %></td>
-        <td><%= link_to '詳細', product %></td>
+        <td><%= link_to '詳細', detail_product_path(product) %></td>
         <td><%= link_to '編集', edit_product_path(product) %></td>
         <td><%= link_to '削除', product, method: :delete, data: { confirm: '出品を取りやめるだけなら編集⇒取り下げからも対応可能となっております。それでも商品を削除いたしますか？' } %></td>
       </tr>

@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   end
   resources :products do
     collection {post :import}
-    
+    member { get :detail }
   end
 
   resources :carts
