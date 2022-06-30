@@ -1,0 +1,18 @@
+<H4>受注詳細</H4>
+
+発注日:<%= @order.created_at.strftime("%Y年%-m月%-d日") %><br>
+時間:<%= @order.created_at.strftime("%-H時%-M分") %><br>
+配送先:<%= @order.address %><br>
+支払総額:<%= @order.total_price.to_s(:delimited) %>円<br>
+発送状況:<%= @order.status %><br>
+
+商品詳細:<% @order_product.each do |order_product| %>
+    <%= order_product&.product&.name %>
+    <%= (order_product.product.price).to_s(:delimited) %>円
+    <%= order_product&.order_quantity %>個
+    小計<%= (order_product&.product&.price*order_product.order_quantity).to_s(:delimited) %>円<br>
+  <% end %>
+
+
+
+<%= link_to '戻る', received_orders_path %>

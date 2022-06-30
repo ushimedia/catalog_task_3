@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     collection { post :check }
     collection { get :history }
     collection { get :received }
+    member { get :received_show }
     collection { get :search }
   end
   resources :users do

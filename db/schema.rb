@@ -46,7 +46,6 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
     t.bigint "order_id", null: false
     t.integer "order_quantity", null: false
     t.integer "order_price", null: false
-    t.datetime "discarded_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"

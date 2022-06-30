@@ -12,6 +12,7 @@
 <table>
   <thead>
     <tr>
+    <th>商品画像</th>
     <th>商品名</th>
     <th>価格</th>
     <th>在庫数</th>
@@ -27,6 +28,11 @@
   <tbody>
     <% @products.each do |product| %>
       <tr>
+      <td><% if product.image.blank? %>
+       <%= image_tag 'noimage.png', :size => '30x30' %>
+       <% else %>
+       <%= image_tag product.image.url, :size => '30x30' %>
+       <% end %></td>
       <td><%= product.name.truncate(20)  %></td>
       <td><%= product.price.to_s(:delimited) %></td>
       <td><%= product.stock.to_s(:delimited) %>個</td>
