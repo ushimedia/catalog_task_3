@@ -26,9 +26,9 @@
       <td><%= order.created_at.strftime("%-H時%-M分") %></td>
       <td><%= order.status %></td>
   
-      <td><%= order.user.name %></td>
-      <td><%= order.address %></td>
-      <td><%= order.total_price.to_s(:delimited) %>円</td>
+      <td><%= order&.user&.name %></td>
+      <td><%= order&.address %></td>
+      <td><%= order&.total_price&.to_s(:delimited) %>円</td>
 
         <td><%= link_to '詳細確認', order %></td>
         <td><%= link_to '編集', edit_order_path(order) %></td>

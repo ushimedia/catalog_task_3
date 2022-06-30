@@ -4,7 +4,7 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
    @q = Product.ransack(params[:q])
-   @products = @q.result.where(status: true)
+   @products = @q.result.where(status: true, discarded_at: nil)
    @cart_items = current_cart.cart_items.includes([:product])
    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
    @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
@@ -133,7 +133,7 @@ end
 
   # DELETE /orders/1 or /orders/1.json
   def destroy
-    @order.destroy
+    @order.discard
 
     respond_to do |format|
       format.html { redirect_to orders_url, notice: "Order was successfully destroyed." }

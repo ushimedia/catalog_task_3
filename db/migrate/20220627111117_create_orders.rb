@@ -6,6 +6,7 @@ class CreateOrders < ActiveRecord::Migration[6.0]
       t.integer	:total_price, null: false
       t.integer	:status, default: 0, null: false
       t.references :user, null: false, foreign_key: true
+      t.datetime :discarded_at, after: :deleted
       t.timestamps
     end
   end

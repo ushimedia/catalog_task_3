@@ -34,6 +34,7 @@ gem 'mini_magick'
 gem 'kaminari'
 gem 'ransack'
 gem 'roo'
+gem 'discard', '~> 1.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false

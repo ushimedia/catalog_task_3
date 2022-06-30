@@ -8,6 +8,9 @@ class CreateProducts < ActiveRecord::Migration[6.0]
       t.boolean :status, default: true, null: false
       t.string :image
       t.references :user, null: false, foreign_key: true
+      t.datetime :discarded_at, after: :deleted
+
+
       t.timestamps
     end
   end

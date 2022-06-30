@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
   enable_extension "plpgsql"
 
   create_table "addresses", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
+    t.string "name", null: false
+    t.string "address", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
   end
 
   create_table "cart_items", force: :cascade do |t|
-    t.integer "quantity", default: 0
+    t.integer "quantity", default: 0, null: false
     t.bigint "product_id", null: false
     t.bigint "cart_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -44,8 +44,9 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
   create_table "order_products", force: :cascade do |t|
     t.bigint "product_id", null: false
     t.bigint "order_id", null: false
-    t.integer "order_quantity"
-    t.integer "order_price"
+    t.integer "order_quantity", null: false
+    t.integer "order_price", null: false
+    t.datetime "discarded_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["order_id"], name: "index_order_products_on_order_id"
@@ -53,11 +54,12 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "name"
-    t.string "address"
-    t.integer "total_price"
-    t.integer "status", default: 0
+    t.string "name", null: false
+    t.string "address", null: false
+    t.integer "total_price", null: false
+    t.integer "status", default: 0, null: false
     t.bigint "user_id", null: false
+    t.datetime "discarded_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_orders_on_user_id"
@@ -71,6 +73,7 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
     t.boolean "status", default: true, null: false
     t.string "image"
     t.bigint "user_id", null: false
+    t.datetime "discarded_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_products_on_user_id"
@@ -85,8 +88,10 @@ ActiveRecord::Schema.define(version: 2022_06_28_011627) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name"
-    t.string "company_address"
+    t.string "company_address", null: false
     t.integer "role", default: 0, null: false
+    t.datetime "discarded_at"
+    t.index ["discarded_at"], name: "index_users_on_discarded_at"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

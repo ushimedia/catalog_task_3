@@ -6,7 +6,7 @@
 <%= form_with model: @order, url: check_orders_path, local: true do |f| %>
 <!-- customer テーブルに登録されている住所の場合です -->
   <%= f.radio_button :address_number, 1, checked: true %> <!-- address_number と定義して1～3の番号を check に送ります -->
-  <%= f.label :address_number_1, "登録住所" %>:<%= current_user.company_address %><br>
+  <%= f.label :address_number_1, "登録住所" %><%= current_user.company_address %><br>
 
 
 

@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.where(user_id: current_user.id)
+    @products = Product.where(user_id: current_user.id, discarded_at: nil)
   end
 
   def import
@@ -57,7 +57,7 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1 or /products/1.json
   def destroy
-    @product.destroy
+    @product.discard
 
     respond_to do |format|
       format.html { redirect_to products_url, notice: "Product was successfully destroyed." }
