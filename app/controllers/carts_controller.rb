@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-    before_action :setup_cart_item!, only: %i[add_item update_item delete_item]
+    before_action :setup_cart_item!, only: %i[ add_item update_item delete_item]
 
     # カート内アイテムの表示
     def my_cart
@@ -14,6 +14,18 @@ class CartsController < ApplicationController
       @cart_item.quantity += params[:quantity].to_i
       if  @cart_item.save
         flash[:notice] = '商品が追加されました。'
+        redirect_to root_path
+      else
+        flash[:alert] = '商品の追加に失敗しました。'
+        redirect_to product_url(params[:product_id])
+      end
+    end
+
+    def add_regular
+      @regular = Regular.find_or_initialize_by(user_id: current_user.id)
+      @regular.regular_quantity = params[:regular_quantity].to_i
+      if  @regular.save
+        flash[:notice] = '商品が"いつもの"に追加されました。'
         redirect_to root_path
       else
         flash[:alert] = '商品の追加に失敗しました。'

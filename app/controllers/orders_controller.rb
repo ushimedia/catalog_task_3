@@ -4,10 +4,12 @@ class OrdersController < ApplicationController
   # GET /orders or /orders.json
   def index
    @q = Product.ransack(params[:q])
+   @q.sorts = 'stock desc' if @q.sorts.empty?
    @products = @q.result.where(status: true, discarded_at: nil)
    @cart_items = current_cart.cart_items.includes([:product])
    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
    @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
+   @regulars = Regular.where(user_id: current_user.id)
 
   
   end

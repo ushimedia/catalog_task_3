@@ -12,4 +12,6 @@
 
 
 <%= link_to "トップページ", root_path %>
+
+<%= button_to '商品を"いつもの"に追加', add_regular_path(product_id: @product.id), class: 'fbtn' %>
 <br>

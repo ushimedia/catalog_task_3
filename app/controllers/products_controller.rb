@@ -11,6 +11,8 @@ class ProductsController < ApplicationController
     redirect_to products_path
   end
 
+  
+
   # GET /products/1 or /products/1.json
   def show
 

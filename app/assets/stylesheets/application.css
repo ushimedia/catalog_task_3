@@ -85,8 +85,14 @@ body main .cart {
 body main .cart .wrapper {
     justify-content: space-around;
     display: flex;
-
 }
+
+.cart .wrapper H3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .card .card_body {
     display: flex;
@@ -112,4 +118,8 @@ a:hover {
     background: #E8D3CA;
     border-bottom: solid 6px #e8dfdc;
     border-radius: 9px;
+}
+
+.card .card-body li {
+    list-style: none;
 }

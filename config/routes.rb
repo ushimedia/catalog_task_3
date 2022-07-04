@@ -16,6 +16,7 @@ Rails.application.routes.draw do
   resources :products do
     collection { post :import }
     member { get :detail }
+
   end
 
   resources :carts
@@ -24,6 +25,8 @@ Rails.application.routes.draw do
   post '/add_item' => 'carts#add_item'
   post '/update_item' => 'carts#update_item'
   delete '/delete_item' => 'carts#delete_item'
+  post '/add_regular' => 'carts#add_regular'
+  post '/recall_regular' => 'carts#recall_regular'
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

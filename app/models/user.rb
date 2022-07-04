@@ -2,6 +2,7 @@ class User < ApplicationRecord
   include Discard::Model
 
   has_many :products, dependent: :destroy
+  has_many :regulars, dependent: :destroy
   has_one :cart, dependent: :destroy
   has_many :addresses
   has_many :orders, dependent: :destroy
