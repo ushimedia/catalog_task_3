@@ -22,13 +22,13 @@ class CartsController < ApplicationController
     end
 
     def add_regular
-      @regular = Regular.find_or_initialize_by(user_id: current_user.id)
-      @regular.regular_quantity = params[:regular_quantity].to_i
+      @regular = Regular.find_or_initialize_by(user_id: current_user.id, product_id: params[:product_id])
+      @regular.regular_quantity += params[:regular_quantity].to_i
       if  @regular.save
         flash[:notice] = '商品が"いつもの"に追加されました。'
-        redirect_to root_path
+        redirect_to product_url(params[:product_id])
       else
-        flash[:alert] = '商品の追加に失敗しました。'
+        flash[:alert] = '商品のe-追加に失敗しました。'
         redirect_to product_url(params[:product_id])
       end
     end

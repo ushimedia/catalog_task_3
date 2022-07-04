@@ -1,13 +1,11 @@
 <% @regulars.each do |regular| %>
   <tr>
-  <td><%= regular.user_id %></td>
-  <td><%= regular.product_id %></td>
+  <td><%= regular.user.name %></td>
+  <td><%= regular.product.name %></td>
   <td><%= regular.regular_quantity %></td>
-  <td><%= regular.regular_number %></td>
+  <td><%= regular.regular_number %></td><br>
 
-
-
-</tr>
+  </tr>
   <% end %>
 
 
@@ -16,43 +14,52 @@
 
 <%= render 'search' %>
 
-  <div class="row ">
-   <% @products.each do |product| %>
-     <div class="col-md-3">
-     <div class="card">
-     <div class="card-body text-center">
-       <tr>
-       <td>
-       <% if product.image.blank? %>
-       <%= link_to image_tag('noimage.png', size: '120x120', alt: "サンプル画像"), product_path(product) %>
-       
-       <% else %>
-       <%= link_to image_tag(product.image.url, size: '120x120', alt: "商品画像"), product_path(product) %>
-       <% end %>
-     
-       </td><br>
-       <td><%= product.name %></td><br>
-       <td><%= product&.description&.truncate(15) %></td><br>
-       <td><%= product.price.to_s(:delimited) %></td>円(税込)<br>
-       <td>残り<%= product.stock %></td>個<br>
-       <% if product.stock > 0 %>
-       <%= button_to '商品をかごに追加', add_item_path(product_id: product, quantity: 1), class: 'fbtn' %>
-       <% else %>
-       <%= button_to '在庫なし', add_item_path(product_id: product, quantity: 1), class: 'fbtn', disabled: true %>
-       <% end %>
-
-		</td>
-       <tr>
+  <div class="row">
+    <% @products.each do |product| %>
+      <div class="col-md-3">
+         
+      <div class="card">
+          <div class="card-body text-center">
+           <tr>
+              <td>
+              <% if product.image.blank? %>
+              <%= link_to image_tag('noimage.png', size: '120x120', alt: "サンプル画像"), product_path(product) %>
+              <% else %>
+              <%= link_to image_tag(product.image.url, size: '120x120', alt: "商品画像"), product_path(product) %>
+              <% end %>
+              </td><br>
+              <td><%= product.name %></td><br>
+              <td><%= product&.description&.truncate(15) %></td><br>
+              <td><%= product.price.to_s(:delimited) %></td>円(税込)<br>
+              <td>残り<%= product.stock %></td>個<br>
+              
+              <td>
+              <% if product.stock > 0 %>
+              <%= form_with url: add_item_path do |form| %>
+                <%= form.hidden_field :product_id, value: product.id %>
+                <%= form.number_field :quantity, autofocus: true, autocomplete: "quantity", value: 1, max:product.stock %>
+                <%= form.submit("商品をかごに追加") %>
+              <% end %>
+               
+               
+              <% else %>
+                <%= button_to '在庫なし', add_item_path(product_id: product, quantity: 1), class: 'fbtn', disabled: true %>
+              <% end %>
+             </td>
+            </tr>
+            </div>
+            </div>
        </div>
-     </div>
-     </div>
-   <% end %>
+        
+    <% end %>
+  </div>
+
 
 
    
 <br>
-</div>
-</div>
+
+
 
 <%= render partial: "carts/cart" %>
 

@@ -93,10 +93,15 @@ body main .cart .wrapper {
     align-items: center;
 }
 
+.card {
+    flex-direction: row;
+}
 
 .card .card_body {
     display: flex;
+
 }
+
 
 a:hover {
     background-color: transparent;

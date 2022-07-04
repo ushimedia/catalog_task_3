@@ -4,7 +4,7 @@ class CreateRegulars < ActiveRecord::Migration[6.0]
       t.references :product, null: false, foreign_key: true
       t.references :user, null: false, foreign_key: true
       t.integer :regular_quantity, null: false, default: 1
-      t.integer :regular_number
+      t.integer :regular_number, default: 1
 
       t.timestamps
     end

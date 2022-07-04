@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_053943) do
     t.bigint "product_id", null: false
     t.bigint "user_id", null: false
     t.integer "regular_quantity", default: 1, null: false
-    t.integer "regular_number"
+    t.integer "regular_number", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["product_id"], name: "index_regulars_on_product_id"
