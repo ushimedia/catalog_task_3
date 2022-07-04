@@ -5,5 +5,5 @@
 <% if @total == 0 %>
 <%= link_to '商品を選んでください', orders_path %>
 <% else %>
-<%= link_to '購入に進む', new_order_path %>
+<%= button_to '購入に進む', new_order_path, method: :get %>
 <% end %>

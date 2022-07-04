@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
   def received
     @orders = Order.where(discarded_at: nil)
-    
+  
     respond_to do |format|
       format.html
       format.csv do |csv|
@@ -166,7 +166,8 @@ end
           order.created_at.strftime("%-H時%-M分"),
           order.address,
           order.total_price.to_s(:delimited),
-          order.status
+          order.status,
+         
         ]
         csv << column_values
       end
