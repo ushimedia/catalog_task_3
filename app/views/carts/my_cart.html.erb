@@ -7,3 +7,13 @@
 <% else %>
 <%= button_to '購入に進む', new_order_path, method: :get %>
 <% end %>
+<br>
+<%= button_to '"いつものあれ"を注文する。', recall_regular_path, class: 'fbtn' %>
+<p>現在登録されている"いつものあれ"リスト一覧</p>
+<% @regulars.each do |regular| %>
+    <tr>
+    <td>・<%= regular.product.name %></td>
+    <td><%= regular.regular_quantity %>個</td>
+    </tr><br>
+    <% end %>
+

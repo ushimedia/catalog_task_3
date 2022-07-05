@@ -6,6 +6,7 @@ class CartsController < ApplicationController
       @cart_items = current_cart.cart_items.includes([:product])
       @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
       @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
+      @regulars = Regular.where(user_id: current_user.id)
     end
   
     # アイテムの追加
@@ -23,13 +24,32 @@ class CartsController < ApplicationController
 
     def add_regular
       @regular = Regular.find_or_initialize_by(user_id: current_user.id, product_id: params[:product_id])
-      @regular.regular_quantity += params[:regular_quantity].to_i
+      @regular.regular_quantity = params[:regular_quantity].to_i
       if  @regular.save
-        flash[:notice] = '商品が"いつもの"に追加されました。'
+        flash[:notice] = '商品が"いつものあれ"リストに追加されました。カートから確認ができます。'
         redirect_to product_url(params[:product_id])
       else
-        flash[:alert] = '商品のe-追加に失敗しました。'
+        flash[:alert] = '"いつものあれ"リストへの追加に失敗しました。'
         redirect_to product_url(params[:product_id])
+      end
+    end
+
+    def recall_regular
+      @regulars = Regular.where(user_id: current_user.id)
+      begin
+        ActiveRecord::Base.transaction do
+      @regulars.each do |r|
+        @cart_item = current_cart.cart_items.find_or_initialize_by(product_id: r.product_id)
+        @cart_item.quantity = r.regular_quantity.to_i
+        @cart_item.cart_id ||= Cart.find(user_id: current_user.id)
+        @cart_item.save!
+      end
+        flash[:notice] = '"いつものあれ"リストが呼び出されました。'
+        redirect_to my_cart_path
+    end
+  rescue
+        flash[:alert] = '"いつものあれ"リストの呼び出しに失敗しました。'
+        redirect_to my_cart_path
       end
     end
   
@@ -51,6 +71,16 @@ class CartsController < ApplicationController
         flash[:alert] = '削除に失敗しました。'
       end
       redirect_to my_cart_path
+    end
+
+    def delete_regular
+      @regulars = Regular.find_by(user_id: current_user.id, product_id: params[:product_id])
+      if @regulars.destroy
+        flash[:notice] = '"いつものあれ"リストから正常に削除されました。'
+      else
+        flash[:alert] = '"いつものあれ"リストからの削除に失敗しました。'
+      end
+      redirect_to product_url(params[:product_id])
     end
   
     private

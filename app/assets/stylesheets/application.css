@@ -73,7 +73,7 @@ main {
     background-color: rgba(237, 228, 225, 0.2);
 }
 
-body main .cart {
+.cart {
     width: 100%;
     height: 65px;
     opacity: 0.85;
@@ -93,9 +93,7 @@ body main .cart .wrapper {
     align-items: center;
 }
 
-.card {
-    flex-direction: row;
-}
+
 
 .card .card_body {
     display: flex;
