@@ -3,7 +3,10 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
+   params[:q] = { stock_gteq: 0 }       if params[:stock] == 1
+   params[:q] = { stock_gteq: 1 }       if params[:stock] == 2
    @q = Product.ransack(params[:q])
+   
    @q.sorts = 'stock desc' if @q.sorts.empty?
    @products = @q.result.where(status: true, discarded_at: nil)
    @cart_items = current_cart.cart_items.includes([:product])

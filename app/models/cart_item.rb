@@ -2,6 +2,10 @@ class CartItem < ApplicationRecord
     belongs_to :product
     belongs_to :cart
 
+    
+    
+    
+   
 
   
     # カート内の商品合計に利用
@@ -9,3 +13,4 @@ class CartItem < ApplicationRecord
       product.price * quantity
     end
 end
+

@@ -17,7 +17,7 @@ class Product < ApplicationRecord
     def self.import(file, current)
         CSV.foreach(file.path, headers: true) do |row|
                row_hash = row.to_hash.slice(*CSV_HEADER.keys)
-            product = find_or_initialize_by(name: row[0], user_id: current)
+            product = find_or_initialize_by(name: row[0], user_id: current, discarded_at: nil)
             if product.new_record? 
                 product.attributes = row_hash.transform_keys(&CSV_HEADER.method(:[]))
                 product.save

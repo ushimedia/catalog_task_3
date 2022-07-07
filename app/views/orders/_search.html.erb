@@ -7,11 +7,14 @@
   <%= f.number_field :price_gteq %>以上〜
   <%= f.number_field :price_lt %>未満<br>
 
-  <%= f.label :stock %>
-  <%= f.number_field :stock_gteq %>以上〜
-  <%= f.number_field :stock_lt %>未満<br>
+  <%#= f.label :stock %>
+  <%#= f.radio_button :stock, value: 1, checked: true %>
+  <%#= f.label :stock, "全商品" %>
+  <%#= f.radio_button :stock, value: 2 %>
+  <%#= f.label :stock, "在庫ありのみ" %>
+ 
 
 
-
+<br>
   <%= f.submit "検索" %>
 <% end %>

@@ -48,7 +48,7 @@ class CartsController < ApplicationController
         redirect_to my_cart_path
     end
   rescue
-        flash[:alert] = '"いつものあれ"リストの呼び出しに失敗しました。'
+        flash[:alert] = '在庫が不足しており"いつものあれ"リストを必要数カートに入れることができませんでした。'
         redirect_to my_cart_path
       end
     end
