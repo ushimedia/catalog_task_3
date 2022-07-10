@@ -23,10 +23,15 @@ class CartsController < ApplicationController
     end
 
     def add_regular
-      @regular = Regular.find_or_initialize_by(user_id: current_user.id, product_id: params[:product_id])
-      @regular.regular_quantity = params[:regular_quantity].to_i
+      @regular = Regular.find_or_initialize_by(user_id: current_user.id, regular_number: params[:regular_number])
+      @regular.save
+      regular_product = RegularProduct.find_or_initialize_by(regular_id: @regular.id, product_id: params[:product_id])
+      regular_product.product_id = params[:product_id]
+      regular_product.regular_quantity = params[:regular_quantity]
+      regular_product.regular_id = @regular.id
+      regular_product.save!     
       if  @regular.save
-        flash[:notice] = '商品が"いつものあれ"リストに追加されました。カートから確認ができます。'
+        flash[:notice] = '商品が"いつものあれ"リストに追加されました。「管理」⇒「いつものあれリスト」からも確認できます。'
         redirect_to product_url(params[:product_id])
       else
         flash[:alert] = '"いつものあれ"リストへの追加に失敗しました。'
@@ -35,12 +40,13 @@ class CartsController < ApplicationController
     end
 
     def recall_regular
-      @regulars = Regular.where(user_id: current_user.id)
+      @regular = Regular.where(user_id: current_user.id, regular_number: params[:regular_number])
+      @r = RegularProduct.where(regular_id: @regular)
       begin
         ActiveRecord::Base.transaction do
-      @regulars.each do |r|
+        @r.each do |r|
         @cart_item = current_cart.cart_items.find_or_initialize_by(product_id: r.product_id)
-        @cart_item.quantity = r.regular_quantity.to_i
+        @cart_item.quantity += r.regular_quantity.to_i
         @cart_item.cart_id ||= Cart.find(user_id: current_user.id)
         @cart_item.save!
       end

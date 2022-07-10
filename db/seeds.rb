@@ -22,11 +22,54 @@ User.create(name: 'サンワコムシス', company_address: '東京都品川区�
   )
 end
 
+Product.create!(
+  name:"シングルモード光ケーブル（10m）",
+  description: "安定した1GbE接続を提供します。",
+  price: 1500,
+  stock: 100,
+  user_id: 2,
+)
+
+
+Product.create!(
+  name:"マルチモード光ケーブル（10m）",
+  description: "安定した1GbE接続を提供します。",
+  price: 1500,
+  stock: 100,
+  user_id: 2,
+)
+
+
+Product.create!(
+  name:"壁面設置用支持ポール",
+  description: "安定した1GbE接続を提供します。",
+  price: 300000,
+  stock: 100,
+  user_id: 2,
+)
+
+Product.create!(
+  name:"自立架台　カウンターウェイト6枚セット",
+  description: "安定した1GbE接続を提供します。",
+  price: 450000,
+  stock: 100,
+  user_id: 2,
+)
+
+Product.create!(
+  name:"FRP架台",
+  description: "安定した1GbE接続を提供します。",
+  price: 380000,
+  stock: 100,
+  user_id: 2,
+)
+
+
 5.times do |n|
   Order.create!(
     name:"トーエネック東京本部",
     address: "東京都豊島区巣鴨1-3-11",
-    total_price: 1980,
+    total_price: 3960,
     user_id: 3,
     created_at: "2022-06-#{n + 1} 13:58:53.271091",
     updated_at: "2022-06-#{n + 1} 13:58:53.271091",
@@ -36,6 +79,17 @@ end
 5.times do |n|
   OrderProduct.create!(
     product_id: 1,
+    order_id: "#{n + 1}",
+    order_quantity: 1,
+    order_price: 1980,
+    created_at: "2022-06-#{n + 1} 13:58:53.271091",
+    updated_at: "2022-06-#{n + 1} 13:58:53.271091",
+  )
+end
+
+5.times do |n|
+  OrderProduct.create!(
+    product_id: 2,
     order_id: "#{n + 1}",
     order_quantity: 1,
     order_price: 1980,

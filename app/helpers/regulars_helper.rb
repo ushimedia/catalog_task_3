@@ -1,0 +1,2 @@
+module RegularsHelper
+end

@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   post '/recall_regular' => 'carts#recall_regular'
   post '/delete_regular' => 'carts#delete_regular'
 
+  resources :regulars
+
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

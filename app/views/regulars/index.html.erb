@@ -1,0 +1,16 @@
+<H3>「いつものあれ」リスト管理一覧</H3>
+
+<% @regulars.each do |r| %>
+<tr>    
+
+  
+    <td><%= r.regular_number %></td>番セット<br>
+
+
+    <td><% r.regular_products.each do |rp| %>
+        <%= rp.product.name %>
+        <%= rp.regular_quantity %>個
+<br>
+    <% end %></td>
+</tr><br><br>
+    <% end %>

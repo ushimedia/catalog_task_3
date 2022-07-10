@@ -18,11 +18,11 @@ https://docs.google.com/spreadsheets/d/1S7wblt4QAUdQ7LtVpK_NEl6fzwZ5wMPF/edit?us
 https://docs.google.com/spreadsheets/d/1S7wblt4QAUdQ7LtVpK_NEl6fzwZ5wMPF/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
 
 ## ワイヤーフレーム
-![wire_frame3修正版](https://user-images.githubusercontent.com/103015276/176754671-efd17e5d-53b2-4dda-818c-8d42f0224841.png)
+![wire_frame3(更新版2)](https://user-images.githubusercontent.com/103015276/178161057-10278b45-a957-468e-870a-1988eb6232f2.png)
 
 ## ER図
-![ER3更新版](https://user-images.githubusercontent.com/103015276/176646436-e478f5ca-c8f6-41f1-a6bc-1c4d6ff3d6ab.png)
+![ER3(更新版2)](https://user-images.githubusercontent.com/103015276/178158995-e2db6686-c6e3-4735-b39e-822af8481fbf.png)
 
 
 ## 画面遷移図
-![screen_transition3修正版](https://user-images.githubusercontent.com/103015276/176754676-b08c1b91-098a-4889-a01b-f9c104a76770.png)
+![screen_transition3(更新版2)](https://user-images.githubusercontent.com/103015276/178161060-c474f0db-6a67-49d2-a4f4-c234e37804c8.png)

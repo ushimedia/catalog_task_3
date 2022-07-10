@@ -13,19 +13,15 @@
 
 <%= link_to "トップページ", root_path %>
 
-<% if @regular.exists?(user_id: current_user.id, product_id: @product.id) %>
 
-              <%= button_to "商品を'いつもの'リストから削除", delete_regular_path(product_id: @product.id), class: 'fbtn' %>
-               
-               
-              <% else %>
  <%= form_with url: add_regular_path do |form| %>
-                <%= form.hidden_field :product_id, value: @product.id %>
-                <%= form.number_field :regular_quantity, autofocus: true, autocomplete: "regular_quantity", value: 1, min: 1 %>
-                <%= form.submit("商品を'いつもの'リストに追加") %>
-              <% end %>
+  <%= form.hidden_field :product_id, value: @product.id %>
+  リスト番号<%= form.number_field :regular_number, autofocus: true, autocomplete: "regular_number", value: 1, min: 1, max: 4 %>番(4セットまで登録できます。)<br>
+  <%= form.number_field :regular_quantity, autofocus: true, autocomplete: "regular_quantity", value: 1, min: 1, max: 999 %>個
+  <%= form.submit("商品を'いつもの'リストに追加") %>
+ <% end %>
                
-              <% end %>
+       
 
 
 <br>

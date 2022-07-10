@@ -29,6 +29,7 @@ class OrdersController < ApplicationController
 
   def received
     @orders = Order.where(discarded_at: nil)
+    
   
     respond_to do |format|
       format.html

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_07_04_053943) do
+ActiveRecord::Schema.define(version: 2022_07_07_113858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -78,14 +78,21 @@ ActiveRecord::Schema.define(version: 2022_07_04_053943) do
     t.index ["user_id"], name: "index_products_on_user_id"
   end
 
-  create_table "regulars", force: :cascade do |t|
+  create_table "regular_products", force: :cascade do |t|
     t.bigint "product_id", null: false
-    t.bigint "user_id", null: false
+    t.bigint "regular_id", null: false
     t.integer "regular_quantity", default: 1, null: false
-    t.integer "regular_number", default: 1
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["product_id"], name: "index_regulars_on_product_id"
+    t.index ["product_id"], name: "index_regular_products_on_product_id"
+    t.index ["regular_id"], name: "index_regular_products_on_regular_id"
+  end
+
+  create_table "regulars", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.integer "regular_number", default: 1, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_regulars_on_user_id"
   end
 
@@ -114,6 +121,7 @@ ActiveRecord::Schema.define(version: 2022_07_04_053943) do
   add_foreign_key "order_products", "products"
   add_foreign_key "orders", "users"
   add_foreign_key "products", "users"
-  add_foreign_key "regulars", "products"
+  add_foreign_key "regular_products", "products"
+  add_foreign_key "regular_products", "regulars"
   add_foreign_key "regulars", "users"
 end
