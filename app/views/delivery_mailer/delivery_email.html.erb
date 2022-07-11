@@ -17,6 +17,12 @@
   配送宛名:<%= @order.name %><br>
   配送先:<%= @order.address %><br>
   支払総額:<%= @order.total_price.to_s(:delimited) %>円<br>
+  注文商品詳細:<br>
+  <% @order.order_products.each do |op| %>
+    <%= op.product.name %>
+    <%= op.order_quantity %>個<br>
+    
+    <% end %>
 
 
 

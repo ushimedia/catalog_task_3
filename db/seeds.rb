@@ -12,7 +12,7 @@ User.create(name: 'トーエネック東京本部', company_address: '東京都�
 User.create(name: '協和エクシオ', company_address: '東京都大田区平和島4丁目1番23号', email: 'test4@yahoo.co.jp', password: 'test444', password_confirmation: 'test444', role: 0)
 User.create(name: 'サンワコムシス', company_address: '東京都品川区東五反田2-17-1', email: 'test5@yahoo.co.jp', password: 'test555', password_confirmation: 'test555', role: 0)
 
-20.times do |n|
+10.times do |n|
   Product.create!(
     name:"NOKIAの商品#{n + 1}",
     description: "MSA準拠SFPモジュール。光ファイバケーブルで最大で40kmの距離に対応し、安定した1GbE接続を提供します。",
@@ -63,6 +63,22 @@ Product.create!(
   stock: 100,
   user_id: 2,
 )
+
+Product.create!(
+  name:"コンクリート柱",
+  description: "15m分割柱、根枷セット。",
+  price: 200000,
+  stock: 100,
+  user_id: 2,
+)
+Product.create!(
+  name:"RIU-D",
+  description: "DRAN設計用伝送装置。",
+  price: 400000,
+  stock: 100,
+  user_id: 2,
+)
+
 
 
 5.times do |n|

@@ -40,21 +40,26 @@ class CartsController < ApplicationController
     end
 
     def recall_regular
-      @regular = Regular.where(user_id: current_user.id, regular_number: params[:regular_number])
+      @regular = Regular.find_by(user_id: current_user.id, regular_number: params[:regular_number])
       @r = RegularProduct.where(regular_id: @regular)
       begin
         ActiveRecord::Base.transaction do
-        @r.each do |r|
-        @cart_item = current_cart.cart_items.find_or_initialize_by(product_id: r.product_id)
-        @cart_item.quantity += r.regular_quantity.to_i
-        @cart_item.cart_id ||= Cart.find(user_id: current_user.id)
-        @cart_item.save!
-      end
-        flash[:notice] = '"いつものあれ"リストが呼び出されました。'
+          @r.each do |r|
+          @cart_item = current_cart.cart_items.find_or_initialize_by(product_id: r.product_id)
+          @cart_item.quantity += r.regular_quantity.to_i
+          @cart_item.cart_id ||= Cart.find(user_id: current_user.id) 
+          @product = Product.find_by(id: r.product_id)
+            if @cart_item.quantity <= @product.stock
+          @cart_item.save!
+            else
+          raise 
+          end
+        end
+        flash[:notice] = '"いつものあれ"リストから呼び出されました。'
         redirect_to my_cart_path
-    end
-  rescue
-        flash[:alert] = '在庫が不足しており"いつものあれ"リストを必要数カートに入れることができませんでした。'
+        end
+        rescue
+        flash[:alert] = '在庫数が不足しており"いつものあれ"リストの商品を必要数カートに入れることができませんでした。'
         redirect_to my_cart_path
       end
     end
