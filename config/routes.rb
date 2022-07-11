@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   post '/delete_regular' => 'carts#delete_regular'
 
   resources :regulars
-
+  resources :regular_products
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end

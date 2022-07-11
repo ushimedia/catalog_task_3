@@ -17,32 +17,32 @@ User.create(name: 'サンワコムシス', company_address: '東京都品川区�
     name:"NOKIAの商品#{n + 1}",
     description: "MSA準拠SFPモジュール。光ファイバケーブルで最大で40kmの距離に対応し、安定した1GbE接続を提供します。",
     price: 1980,
-    stock: 3,
+    stock: 30,
     user_id: 2,
   )
 end
 
 Product.create!(
   name:"シングルモード光ケーブル（10m）",
-  description: "安定した1GbE接続を提供します。",
+  description: "コア径を小さくすることでモードを1つにした光ファイバで、高速通信が可能。",
   price: 1500,
-  stock: 100,
+  stock: 200,
   user_id: 2,
 )
 
 
 Product.create!(
   name:"マルチモード光ケーブル（10m）",
-  description: "安定した1GbE接続を提供します。",
+  description: "コア径や屈折率など分布によって、複数モードの光が伝搬するように設計されたマルチモード光ファイバの一種。",
   price: 1500,
-  stock: 100,
+  stock: 200,
   user_id: 2,
 )
 
 
 Product.create!(
   name:"壁面設置用支持ポール",
-  description: "安定した1GbE接続を提供します。",
+  description: "建物高40m未満用、標準設計対応品。",
   price: 300000,
   stock: 100,
   user_id: 2,
@@ -50,7 +50,7 @@ Product.create!(
 
 Product.create!(
   name:"自立架台　カウンターウェイト6枚セット",
-  description: "安定した1GbE接続を提供します。",
+  description: "擦れ防止ゴム敷パット付属。親機側。",
   price: 450000,
   stock: 100,
   user_id: 2,
@@ -58,7 +58,7 @@ Product.create!(
 
 Product.create!(
   name:"FRP架台",
-  description: "安定した1GbE接続を提供します。",
+  description: "プラスチック基礎土台設置、三重防水加工推奨品。",
   price: 380000,
   stock: 100,
   user_id: 2,

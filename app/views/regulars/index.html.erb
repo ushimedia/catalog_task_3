@@ -1,16 +1,20 @@
 <H3>「いつものあれ」リスト管理一覧</H3>
 
 <% @regulars.each do |r| %>
+    <div class="card">
+<div class="card-body text-center">
 <tr>    
 
   
-    <td><%= r.regular_number %></td>番セット<br>
-
-
+    <td><%= r.regular_number %></td>番セット
+   
+    <td><%= link_to '削除', r, method: :delete, data: { confirm: '登録セットを削除しますか？' } %></td><br>
     <td><% r.regular_products.each do |rp| %>
         <%= rp.product.name %>
         <%= rp.regular_quantity %>個
+        <td><%= link_to '個数変更', edit_regular_product_path(rp) %></td>
+        <%= link_to '削除', rp, method: :delete, data: { confirm: '登録セット商品を削除しますか？' } %>
 <br>
     <% end %></td>
-</tr><br><br>
+</tr></div></div>
     <% end %>
