@@ -6,9 +6,9 @@
 <table>
   <thead>
     <tr>
-    <th>発注日</th>
+    <th> <%= sort_link(@q, :created_at, "発注日") %></th>
     <th>時間</th>
-    <th>ステータス</th>
+    <th> <%= sort_link(@q, :status, "ステータス") %></th>
     <th>配送先</th>
     <th>合計金額</th>
     <th>発注詳細</th>

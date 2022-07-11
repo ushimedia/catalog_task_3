@@ -126,3 +126,22 @@ a:hover {
 .card .card-body li {
     list-style: none;
 }
+
+.pagination {
+    justify-content: center;
+}
+
+.pagination>li>a {
+    border: none;
+    color: #696969;
+    font-size: 1.4em;
+}
+
+.pagination>.active>a {
+    background: #93c9ff;
+    border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+    border-radius: 15px;
+}

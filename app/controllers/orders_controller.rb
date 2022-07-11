@@ -3,12 +3,9 @@ class OrdersController < ApplicationController
 
   # GET /orders or /orders.json
   def index
-   params[:q] = { stock_gteq: 0 }       if params[:stock] == 1
-   params[:q] = { stock_gteq: 1 }       if params[:stock] == 2
    @q = Product.ransack(params[:q])
-   
    @q.sorts = 'stock desc' if @q.sorts.empty?
-   @products = @q.result.where(status: true, discarded_at: nil)
+   @products = @q.result.where(status: true, discarded_at: nil).page(params[:page]).per(20)
    @cart_items = current_cart.cart_items.includes([:product])
    @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
    @total_item = @cart_items.inject(0) { |sum, item| sum + item.quantity }
@@ -22,13 +19,17 @@ class OrdersController < ApplicationController
 
 
   def history
-    @orders = Order.where(user_id: current_user.id, discarded_at: nil)
+    @q = Order.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @orders = @q.result.where(user_id: current_user.id, discarded_at: nil)
     
 
   end
 
   def received
-    @orders = Order.where(discarded_at: nil)
+    @q = Order.ransack(params[:q])
+    @q.sorts = 'created_at desc' if @q.sorts.empty?
+    @orders = @q.result.where(discarded_at: nil)
     
   
     respond_to do |format|

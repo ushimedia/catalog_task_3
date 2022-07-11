@@ -1,4 +1,10 @@
 <H1>受注履歴</H1>
+
+
+
+
+
+
 <%= link_to 'CSV形式でダウンロードする', received_orders_path(format: :csv) %>
 <div class="row">
 <div class="col-12 d-flex justify-content-center">
@@ -6,12 +12,13 @@
 <table>
   <thead>
     <tr>
-    <th>発注日</th>
+    <th> <%= sort_link(@q, :created_at, "発注日") %></th>
     <th>時間</th>
-    <th>ステータス</th>
+    <th> <%= sort_link(@q, :status, "ステータス") %></th>
     <th>発注業者</th>
     <th>配送先</th>
     <th>合計金額</th>
+    <th>商品</th>
     <th>詳細</th>
     <th>編集</th>
     <th>削除</th>

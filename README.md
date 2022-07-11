@@ -12,10 +12,10 @@
  $ rails s  
 
 ## カタログ設計
-https://docs.google.com/spreadsheets/d/1S7wblt4QAUdQ7LtVpK_NEl6fzwZ5wMPF/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
+https://docs.google.com/spreadsheets/d/1MRyBpTB0EBNUJWz1l_b9OEpIo37v4f4X/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
 
 ## テーブル定義書
-https://docs.google.com/spreadsheets/d/1S7wblt4QAUdQ7LtVpK_NEl6fzwZ5wMPF/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
+https://docs.google.com/spreadsheets/d/1MRyBpTB0EBNUJWz1l_b9OEpIo37v4f4X/edit?usp=sharing&ouid=100656607474555479650&rtpof=true&sd=true
 
 ## ワイヤーフレーム
 ![wire_frame3(更新版2)](https://user-images.githubusercontent.com/103015276/178161057-10278b45-a957-468e-870a-1988eb6232f2.png)
