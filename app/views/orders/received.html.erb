@@ -4,7 +4,7 @@
 
 <%= link_to 'CSV形式でダウンロードする', received_orders_path(format: :csv) %>
 <div class="row">
-<div class="col-12 d-flex justify-content-center">
+  <div class="col-12 d-flex justify-content-center">
 
 <table>
   <thead>
@@ -25,25 +25,24 @@
 
   <tbody>
     <% @orders.each do |order| %>
-      <tr>
-      <td><%= order.created_at.strftime("%Y年%-m月%-d日") %></td>
-      <td><%= order.created_at.strftime("%-H時%-M分") %></td>
-      <td><%= order.status %></td>
-  
-      <td><%= order&.user&.name %></td>
-      <td><%= order&.address %></td>
-      <td><%= order&.total_price&.to_s(:delimited) %>円</td>
-      <td>
-      <% order.order_products.each do |op| %>
-        <%= op.product.name %>
-        <%= op.order_quantity %>個<br>
-        
-        <% end %>
-        </td>
-        <td><%= link_to '詳細確認', received_show_order_path(order) %></td>
-        <td><%= link_to '編集', edit_order_path(order) %></td>
-        <td><%= link_to '受注削除', order, method: :delete, data: { confirm: '受注を削除します。先方の発注業者様の確認は取れておりますでしょうか?' } %></td>
-      </tr>
+      
+      <tr> 
+          <td><%= order.created_at.strftime("%Y年%-m月%-d日") %></td>
+          <td><%= order.created_at.strftime("%-H時%-M分") %></td>
+          <td><%= order.status %></td>
+          <td><%= order&.user&.name %></td>
+          <td><%= order&.address %></td>
+          <td><%= order&.total_price&.to_s(:delimited) %>円</td>
+          <td>
+          <% order.order_products.each do |op| %>
+            <%= op.product.name %>
+            <%= op.order_quantity %>個<br>
+          <% end %>
+          </td>
+          <td><%= link_to '詳細確認', received_show_order_path(order) %></td>
+          <td><%= link_to '編集', edit_order_path(order) %></td>
+          <td><%= link_to '受注削除', order, method: :delete, data: { confirm: '受注を削除します。先方の発注業者様の確認は取れておりますでしょうか?' } %></td>
+       </tr>
     <% end %>
   </tbody>
 </table>

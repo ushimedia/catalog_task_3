@@ -6,16 +6,26 @@ class ProductsController < ApplicationController
     @products = Product.where(user_id: current_user.id, discarded_at: nil)
   end
 
+  
+
   def import
-    Product.import(params[:file], current_user.id)
-    redirect_to products_path
+    if params[:file].present?
+      if Product.csv_format_check(params[:file]).present?
+        redirect_to products_path, notice: "エラーが発生したため処理を中断しました。#{Product.csv_format_check(params[:file])}"
+      else
+        message = Product.import_save(params[:file], current_user.id)
+        redirect_to products_path, notice: "インポート商品登録が完了しました。#{message}"
+      end
+    else
+      redirect_to products_path, notice: "インポート処理が失敗しました。ファイルを選択し直してください。"
+    end
   end
 
   
 
   # GET /products/1 or /products/1.json
   def show
- @regular = Regular.where(user_id: current_user.id)
+    @regular = Regular.where(user_id: current_user.id)
   end
 
   # GET /products/new
