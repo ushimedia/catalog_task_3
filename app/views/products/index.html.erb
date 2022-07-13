@@ -13,11 +13,11 @@
   <thead>
     <tr>
     <th>商品画像</th>
-    <th>商品名</th>
-    <th>価格</th>
-    <th>在庫数</th>
+    <th> <%= sort_link(@q, :name, "商品名") %></th>
+    <th> <%= sort_link(@q, :price, "価格") %></th>
+    <th> <%= sort_link(@q, :stock, "在庫数") %></th>
     <th>商品説明</th>
-    <th>出品状況</th>
+    <th> <%= sort_link(@q, :status, "出品状況") %></th>
     <th>詳細</th>
     <th>編集</th>
     <th>削除</th>
